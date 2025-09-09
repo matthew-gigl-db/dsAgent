@@ -25,7 +25,6 @@ def bronze():
     df = (spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "csv")
         .option("cloudFiles.inferSchema", "true")
-        .option("cloudFiles.includeExistingFiles", "false")
         .load(path))
 
     return (

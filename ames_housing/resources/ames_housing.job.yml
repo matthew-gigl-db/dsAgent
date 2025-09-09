@@ -38,7 +38,7 @@ resources:
           
 
       tasks:
-        - task_key: download_dataset
+        - task_key: copy_data_set
           notebook_task: 
             notebook_path: ../src/00-copy-csv-file-to-volume.ipynb
           # note the at the environment for notebook tasks is part of the notebook itself. 
@@ -46,7 +46,7 @@ resources:
 
         - task_key: refresh_pipeline
           depends_on:
-            - task_key: download_dataset
+            - task_key: copy_data_set
           pipeline_task:
             pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
             full_refresh: true
