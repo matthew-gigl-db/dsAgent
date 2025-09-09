@@ -2,7 +2,7 @@
 
 CREATE OR REFRESH STREAMING TABLE sale_prices
 (
-  CONSTRAINT valid_schema EXPECT (_rescued_data is not NULL) ON VIOLATION DROP ROW
+  CONSTRAINT valid_schema EXPECT (_rescued_data is NULL) ON VIOLATION DROP ROW
 )
 TBLPROPERTIES (
   'delta.enableChangeDataFeed' = 'true',
@@ -25,14 +25,14 @@ APPLY AS TRUNCATE WHEN
 SEQUENCE BY
   (rcrd_timestamp, _commit_timestamp)
 COLUMNS * EXCEPT
-  (_change_type, _commit_version, _commit_timestamp, rcrd_timestamp, ingest_time, order)
+  (_change_type, _commit_version, _commit_timestamp, index_file_source_id, file_metadata, rcrd_timestamp, ingest_time, order)
 STORED AS
   SCD TYPE 1;
 
 
 CREATE STREAMING TABLE sale_prices_quarantine 
   (
-  CONSTRAINT invalid_schema EXPECT (_rescued_data is NULL) ON VIOLATION DROP ROW
+  CONSTRAINT invalid_schema EXPECT (_rescued_data is not NULL) ON VIOLATION DROP ROW
 )
 TBLPROPERTIES (
   'delta.enableChangeDataFeed' = 'true',
