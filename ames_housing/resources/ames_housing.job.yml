@@ -29,8 +29,8 @@ resources:
           name: catalog_use
         - default: ${resources.schemas.ames_housing_schema.name}
           name: schema_use
-        - default: ${var.volume}
-          name: volume_use
+        - default: ${resources.volumes.ames_housing_landing_volume.volume_path}
+          name: volume_path_use
 
       tasks:
         - task_key: download_dataset
