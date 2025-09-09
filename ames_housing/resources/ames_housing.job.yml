@@ -13,23 +13,14 @@ resources:
       email_notifications:
         on_failure: ${var.notifications}
 
-      tasks:
-        - task_key: download_dataset
-          notebook_task: 
-            notebook_path: ../src/00-download-csv-file.ipynb
-          environment_key: primary
-
-        - task_key: refresh_pipeline
-          depends_on:
-            - task_key: download_dataset
-          pipeline_task:
-            pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
-            full_refresh: true
-
       environments:
         - environment_key: primary
           spec:
-            environment_version: "4"
+            environment_version: ${var.serverless_environment_version}
+            dependencies: []
+        - environment_key: make_ames
+          spec:
+            environment_version: ${var.serverless_environment_version}
             dependencies: ["kagglehub"]
 
       parameters:
@@ -39,3 +30,18 @@ resources:
           name: schema_use
         - default: ${var.volume}
           name: volume_use
+
+      tasks:
+        - task_key: download_dataset
+          notebook_task: 
+            notebook_path: ../src/00-download-csv-file.ipynb
+          environment_key: make_ames
+
+        - task_key: refresh_pipeline
+          depends_on:
+            - task_key: download_dataset
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
+            full_refresh: true
+
+

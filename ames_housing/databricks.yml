@@ -29,7 +29,10 @@ variables:
   run_as_user_permissions:
     description: Permission grants to be given to the run_as_user of the target workspace. 
   user_permissions: 
-    description: Permission grants to be given to the users group of the target workspace.     
+    description: Permission grants to be given to the users group of the target workspace.  
+  serverless_environment_version: 
+    default: "4"
+    description: The Serverless Environment version to use with serverless workflows.  
 
 targets:
   dev:
