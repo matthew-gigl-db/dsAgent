@@ -10,3 +10,12 @@ resources:
       libraries:
         - glob:
             include: transformations/**
+      configuration:
+        catalog_use: ${var.catalog}
+        schema_use: ${resources.schemas.ames_housing_schema.name}
+        volume_use_path: ${resources.volumes.ames_housing_landing_volume.volume_path}
+        ml_model_use: ${resources.registered_models.ames_housing_model.name}
+        ml_model_storage_location: ${resources.volumes.model_storage_location_volume.volume_path}
+
+
+
