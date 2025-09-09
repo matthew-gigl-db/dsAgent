@@ -1,0 +1,6 @@
+resources:
+  volumes:
+    ames_housing_landing_volume:
+      catalog_name: ${var.catalog}
+      name: ${var.volume}
+      schema_name: ${var.schema}
