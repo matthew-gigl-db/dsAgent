@@ -27,7 +27,7 @@ resources:
       parameters:
         - default: ${var.catalog}
           name: catalog_use
-        - default: ${var.schema}
+        - default: ${resources.schemas.ames_housing_schema.name}
           name: schema_use
         - default: ${var.volume}
           name: volume_use

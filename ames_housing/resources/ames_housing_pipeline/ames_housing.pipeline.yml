@@ -5,7 +5,7 @@ resources:
       serverless: true
       channel: "PREVIEW"
       catalog: ${var.catalog}
-      schema: ${var.schema}
+      schema: ${resources.schemas.ames_housing_schema.name}
       root_path: "."
       libraries:
         - glob:
