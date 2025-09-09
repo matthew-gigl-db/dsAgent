@@ -18,6 +18,7 @@ resources:
           spec:
             environment_version: ${var.serverless_environment_version}
             dependencies: []
+
         - environment_key: make_ames
           spec:
             environment_version: ${var.serverless_environment_version}
