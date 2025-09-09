@@ -3,10 +3,10 @@ resources:
     ames_housing_schema:
       name: ${var.schema}
       grants:
-        - principal: users
+        - principal: workspace_users
           privileges:
             - SELECT
         - principal: ${var.run_as_user}
           privileges:
-            - CAN_MANAGE
+            - MANAGE
       catalog_name: ${var.catalog}

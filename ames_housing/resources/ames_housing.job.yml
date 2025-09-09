@@ -25,22 +25,28 @@ resources:
             dependencies: ["kagglehub"]
 
       parameters:
-        - default: ${var.catalog}
-          name: catalog_use
-        - default: ${var.schema}
-          name: schema_use
-        - default: ${var.volume}
-          name: volume_use
+        - name: catalog_use
+          default: ${var.catalog}
+        - name: schema_use 
+          default: ${resources.schemas.ames_housing_schema.name}
+        - name: volume_path_use
+          default: ${resources.volumes.ames_housing_landing_volume.volume_path}
+        - name: ml_model_name_use
+          default: ${resources.registered_models.ames_housing_model.name}
+        - name: ml_model_storage_location
+          default: ${resources.volumes.model_storage_location_volume.volume_path}
+          
 
       tasks:
-        - task_key: download_dataset
+        - task_key: copy_data_set
           notebook_task: 
-            notebook_path: ../src/00-download-csv-file.ipynb
-          environment_key: make_ames
+            notebook_path: ../src/00-copy-csv-file-to-volume.ipynb
+          # note the at the environment for notebook tasks is part of the notebook itself. 
+          # environment_key: make_ames
 
         - task_key: refresh_pipeline
           depends_on:
-            - task_key: download_dataset
+            - task_key: copy_data_set
           pipeline_task:
             pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
             full_refresh: true

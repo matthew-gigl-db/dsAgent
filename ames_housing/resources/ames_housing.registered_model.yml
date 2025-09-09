@@ -7,11 +7,10 @@ resources:
     ames_housing_model:
       name: ${var.ml_model_name}  # Use a variable for model name for flexibility
       catalog_name: ${var.catalog}  # Use a variable for catalog
-      schema_name: ${var.schema}    # Use a variable for schema
+      schema_name: ${resources.schemas.ames_housing_schema.name}   # Use a variable for schema
       comment: "Ames Housing price prediction model registered in Unity Catalog."
-      storage_location: ${var.model_storage_location_volume}
+      storage_location: ${resources.volumes.model_storage_location_volume.volume_path}
       grants:
-        - principal: users
-          privileges: ${var.user_permissions}
         - principal: ${var.run_as_user}
-          privileges: ${var.run_as_user_permissions}
+          privileges:
+            - EXECUTE 

@@ -5,8 +5,18 @@ resources:
       serverless: true
       channel: "PREVIEW"
       catalog: ${var.catalog}
-      schema: ${var.schema}
+      schema: ${resources.schemas.ames_housing_schema.name}
       root_path: "."
       libraries:
         - glob:
             include: transformations/**
+      configuration:
+        pipelines.streamingFlowReadOptionsEnabled: "true"
+        catalog_use: ${var.catalog}
+        schema_use: ${resources.schemas.ames_housing_schema.name}
+        volume_path_use: ${resources.volumes.ames_housing_landing_volume.volume_path}
+        ml_model_use: ${resources.registered_models.ames_housing_model.name}
+        ml_model_storage_location: ${resources.volumes.model_storage_location_volume.volume_path}
+
+
+
