@@ -1,0 +1,6 @@
+resources:
+  volumes:
+    model_storage_location_volume:
+      catalog_name: ${var.catalog}
+      name: ${var.model_storage_location_volume}
+      schema_name: ${var.schema}

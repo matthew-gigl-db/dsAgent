@@ -1,0 +1,17 @@
+# Databricks Asset Bundle resource definition for a Unity Catalog registered model
+# See: https://docs.databricks.com/dev-tools/bundles/resources.html#registered_model-unity-catalog
+# This YAML should be placed in your bundle's resources directory (e.g., resources/model.yml)
+
+resources:
+  registered_models:
+    ames_housing_model:
+      name: ${var.ml_model_name}  # Use a variable for model name for flexibility
+      catalog_name: ${var.catalog}  # Use a variable for catalog
+      schema_name: ${var.schema}    # Use a variable for schema
+      comment: "Ames Housing price prediction model registered in Unity Catalog."
+      storage_location: ${var.model_storage_location_volume}
+      grants:
+        - principal: users
+          privileges: ${var.user_permissions}
+        - principal: ${var.run_as_user}
+          privileges: ${var.run_as_user_permissions}
