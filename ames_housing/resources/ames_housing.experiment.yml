@@ -1,7 +1,0 @@
-resources:
-  experiments:
-    experiment:
-      name: ${var.ml_model_name}_experiments
-      permissions:
-        - level: CAN_READ
-          group_name: users

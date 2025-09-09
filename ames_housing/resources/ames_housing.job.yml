@@ -45,6 +45,5 @@ resources:
           pipeline_task:
             pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
             full_refresh: true
-          environment_key: primary
 
 
