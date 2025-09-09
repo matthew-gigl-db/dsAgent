@@ -36,7 +36,8 @@ resources:
         - task_key: download_dataset
           notebook_task: 
             notebook_path: ../src/00-download-csv-file.ipynb
-          environment_key: make_ames
+          # note the at the environment for notebook tasks is part of the notebook itself. 
+          # environment_key: make_ames
 
         - task_key: refresh_pipeline
           depends_on:
@@ -44,5 +45,6 @@ resources:
           pipeline_task:
             pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
             full_refresh: true
+          environment_key: primary
 
 

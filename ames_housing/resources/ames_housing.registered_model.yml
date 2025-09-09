@@ -11,7 +11,6 @@ resources:
       comment: "Ames Housing price prediction model registered in Unity Catalog."
       storage_location: ${var.model_storage_location_volume}
       grants:
-        - principal: users
-          privileges: ${var.user_permissions}
         - principal: ${var.run_as_user}
-          privileges: ${var.run_as_user_permissions}
+          privileges:
+            - EXECUTE 
