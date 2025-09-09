@@ -25,7 +25,7 @@ APPLY AS TRUNCATE WHEN
 SEQUENCE BY
   (rcrd_timestamp, _commit_timestamp)
 COLUMNS * EXCEPT
-  (_change_type, _commit_version, _commit_timestamp, _rescued_data, rcrd_timestamp, ingest_time, order)
+  (_change_type, _commit_version, _commit_timestamp, rcrd_timestamp, ingest_time, order)
 STORED AS
   SCD TYPE 1;
 
@@ -42,4 +42,4 @@ TBLPROPERTIES (
   'delta.autoOptimize.autoCompact' = 'true',
   'quality' = 'bronze'
 ) 
-AS SELECT * FROM STREAM(bronze_cdf);
+AS SELECT * EXCEPT (_change_type, _commit_version, _commit_timestamp) FROM STREAM(bronze_cdf);
