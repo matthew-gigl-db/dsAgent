@@ -25,12 +25,17 @@ resources:
             dependencies: ["kagglehub"]
 
       parameters:
-        - default: ${var.catalog}
-          name: catalog_use
-        - default: ${resources.schemas.ames_housing_schema.name}
-          name: schema_use
-        - default: ${resources.volumes.ames_housing_landing_volume.volume_path}
-          name: volume_path_use
+        - name: catalog_use
+          default: ${var.catalog}
+        - name: schema_use 
+          default: ${resources.schemas.ames_housing_schema.name}
+        - name: volume_path_use
+          default: ${resources.volumes.ames_housing_landing_volume.volume_path}
+        - name: ml_model_name_use
+          default: ${resources.registered_models.ames_housing_model.name}
+        - name: ml_model_storage_location
+          default: ${resources.volumes.model_storage_location_volume.volume_path}
+          
 
       tasks:
         - task_key: download_dataset
