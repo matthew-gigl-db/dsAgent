@@ -22,11 +22,11 @@ def bronze():
     Reads the raw housing data CSV files as a streaming source using Auto Loader.
     """
 
-    df = spark.readStream.format("cloudFiles")
+    df = (spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "csv")
         .option("cloudFiles.inferColumnTypes", "true")
         .option("cloudFiles.includeExistingFiles", "false")
-        .load(path)
+        .load(path))
 
     return (
         df.selectExpr(
