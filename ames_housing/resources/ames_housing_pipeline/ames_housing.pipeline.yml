@@ -1,0 +1,12 @@
+resources:
+  pipelines:
+    ames_housing_pipeline:
+      name: ames_housing_pipeline
+      serverless: true
+      channel: "PREVIEW"
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      root_path: "."
+      libraries:
+        - glob:
+            include: transformations/**

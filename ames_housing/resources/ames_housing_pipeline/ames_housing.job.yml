@@ -1,0 +1,32 @@
+# The job that triggers ames_housing_pipeline.
+resources:
+  jobs:
+    ames_housing_job:
+      name: ames_housing_job
+
+      trigger:
+        # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+        periodic:
+          interval: 1
+          unit: DAYS
+
+      email_notifications:
+        on_failure: ${var.notifications}
+
+      tasks:
+        - task_key: download_dataset
+          notebook_task: 
+            notebook_path: ../src/00-download-csv-file.ipynb
+        - task_key: refresh_pipeline
+          depends_on:
+            - task_key: download_dataset
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
+
+      parameters:
+        - default: ${var.catalog}
+          name: catalog_use
+        - default: ${var.schema}
+          name: schema_use
+        - default: ${var.volume}
+          name: volume_use
