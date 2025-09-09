@@ -17,11 +17,20 @@ resources:
         - task_key: download_dataset
           notebook_task: 
             notebook_path: ../src/00-download-csv-file.ipynb
+          environment_key: primary
+
         - task_key: refresh_pipeline
           depends_on:
             - task_key: download_dataset
           pipeline_task:
             pipeline_id: ${resources.pipelines.ames_housing_pipeline.id}
+            full_refresh: true
+
+      environments:
+        - environment_key: primary
+          spec:
+            environment_version: "4"
+            dependencies: ["kagglehub"]
 
       parameters:
         - default: ${var.catalog}
