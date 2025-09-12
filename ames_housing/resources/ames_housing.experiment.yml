@@ -1,7 +1,7 @@
 resources:
   experiments:
     ames_housing_experiment:
-      name: /Workspace/experiments/${resources.registered_models.ames_housing_model.name}
+      name: /Workspace/experiments/${var.ml_model_name}
       permissions:
         - level: CAN_READ
           group_name: users
