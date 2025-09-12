@@ -35,6 +35,8 @@ resources:
           default: ${resources.registered_models.ames_housing_model.name}
         - name: ml_model_storage_location
           default: ${resources.volumes.model_storage_location_volume.volume_path}
+        - name: ml_model_experiments_name_use
+          default: ${resources.experiments.ames_housing_experiment.name}
           
 
       tasks:

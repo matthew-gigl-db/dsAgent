@@ -13,4 +13,4 @@ resources:
       grants:
         - principal: ${var.run_as_user}
           privileges:
-            - EXECUTE 
+            - MANAGE 
