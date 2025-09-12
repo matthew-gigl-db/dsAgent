@@ -1,7 +1,7 @@
 resources:
   experiments:
     experiment:
-      name: ${resources.volumes.model_storage_location_volume.volume_path}/experiments/${var.ml_model_name}
+      name: /Workspace/experiments/${resources.registered_models.ames_housing_model.name}
       permissions:
         - level: CAN_READ
           group_name: workspace_users
