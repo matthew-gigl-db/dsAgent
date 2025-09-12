@@ -3,9 +3,8 @@ resources:
     ames_housing_schema:
       name: ${var.schema}
       grants:
-        - principal: users
+        - principal: account users
           privileges:
-            - USE
             - SELECT
             - READ_VOLUME
             - EXECUTE
