@@ -25,6 +25,7 @@ resources:
         volume_path_use: ${resources.volumes.ames_housing_landing_volume.volume_path}
         ml_model_use: ${resources.registered_models.ames_housing_model.name}
         ml_model_storage_location: ${resources.volumes.model_storage_location_volume.volume_path}
+        ml_model_experiments_name_use: ${resources.experiments.ames_housing_experiment.name}
 
 
 

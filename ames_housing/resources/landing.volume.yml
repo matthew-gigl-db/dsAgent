@@ -3,4 +3,4 @@ resources:
     ames_housing_landing_volume:
       catalog_name: ${var.catalog}
       name: ${var.volume}
-      schema_name: ${var.schema}
+      schema_name: ${resources.schemas.ames_housing_schema.name}
