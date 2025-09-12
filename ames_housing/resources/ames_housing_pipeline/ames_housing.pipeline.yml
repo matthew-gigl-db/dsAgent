@@ -7,6 +7,14 @@ resources:
       catalog: ${var.catalog}
       schema: ${resources.schemas.ames_housing_schema.name}
       root_path: "."
+      tags:
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags)requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
+        env: ${bundle.target}
       libraries:
         - glob:
             include: transformations/**
