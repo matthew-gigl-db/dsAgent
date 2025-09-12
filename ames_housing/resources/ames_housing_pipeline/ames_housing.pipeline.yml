@@ -11,7 +11,7 @@ resources:
         parentProject: ${var.tags_parentProject}
         project: ${var.tags_project}
         businessUnit: ${var.tags_businessUnit}
-        requestedBy: ${var.tags)requestedBy}
+        requestedBy: ${var.tags_requestedBy}
         developer: ${var.tags_developer}
         RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
