@@ -33,6 +33,25 @@ variables:
   serverless_environment_version: 
     default: "4"
     description: The Serverless Environment version to use with serverless workflows.  
+  tags_parentProject: 
+    default: dsAgent
+    description: The name of the parent project used for tagging deployed resources. 
+  tags_project:
+    default: MakeAmes
+    description: The name of the project/subproject used for tagging deployed resources.
+  tags_businessUnit: 
+    default: "Healthcare and Life Sciences"
+    description: The business or accounting unit assigned.  
+  tags_RemoveAfter: 
+    default: 2026-09-12
+    description: Date the resources may be destroyed safely.  Defaults to one year after deployment. 
+  tags_developer: 
+    default: matthew.giglia@databricks.com
+    description: Original developer or developers for Ops contacts
+  tags_requestedBy:
+    default: Databricks
+    description: Team, company or stakeholders that requested the project.  
+
 
 targets:
   dev:
@@ -48,12 +67,21 @@ targets:
       jobs_max_concurrent_runs: 1
       pipelines_development: true
       tags:
-        project: MakeAmes
-        developer: matthew.giglia@databricks.com
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags_requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
     default: true
     workspace:
       host: https://dbc-e5684c0a-20fa.cloud.databricks.com
+    permissions:
+      - user_name: matthew.giglia@databricks.com
+        level: CAN_MANAGE
+      - group_name: users
+        level: CAN_VIEW
     variables:
       catalog: main
       schema: ames_housing
@@ -72,8 +100,12 @@ targets:
       jobs_max_concurrent_runs: 1
       pipelines_development: false
       tags:
-        project: MakeAmes
-        developer: matthew.giglia@databricks.com
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags_requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
     workspace:
       host: https://dbc-e5684c0a-20fa.cloud.databricks.com
@@ -81,6 +113,8 @@ targets:
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
+      - group_name: users
+        level: CAN_VIEW
     variables:
       catalog: main
       schema: ames_housing
@@ -99,8 +133,12 @@ targets:
       jobs_max_concurrent_runs: 1
       pipelines_development: false
       tags:
-        project: MakeAmes
-        developer: matthew.giglia@databricks.com
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags_requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
     workspace:
       host: https://dbc-e5684c0a-20fa.cloud.databricks.com
@@ -108,6 +146,8 @@ targets:
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
+      - group_name: users
+        level: CAN_VIEW
     variables:
       catalog: main
       schema: ames_housing
@@ -125,8 +165,12 @@ targets:
       jobs_max_concurrent_runs: 1
       pipelines_development: false
       tags:
-        project: MakeAmes
-        developer: matthew.giglia@databricks.com
+        parentProject: ${var.tags_parentProject}
+        project: ${var.tags_project}
+        businessUnit: ${var.tags_businessUnit}
+        requestedBy: ${var.tags_requestedBy}
+        developer: ${var.tags_developer}
+        RemoveAfter: ${var.tags_RemoveAfter}
         env: ${bundle.target}
     workspace:
       host: https://dbc-e5684c0a-20fa.cloud.databricks.com
@@ -134,6 +178,8 @@ targets:
     permissions:
       - user_name: matthew.giglia@databricks.com
         level: CAN_MANAGE
+      - group_name: users
+        level: CAN_VIEW
     variables:
       catalog: main
       schema: ames_housing

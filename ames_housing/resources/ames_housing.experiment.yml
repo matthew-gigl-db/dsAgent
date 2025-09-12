@@ -1,8 +1,8 @@
 resources:
   experiments:
-    experiment:
-      name: ${var.ml_model_name}_experiments
+    ames_housing_experiment:
+      name: /Workspace/experiments/${var.ml_model_name}
       permissions:
         - level: CAN_READ
-          group_name: workspace_users
+          group_name: users
       artifact_location: dbfs:${resources.volumes.model_storage_location_volume.volume_path}/experiments
