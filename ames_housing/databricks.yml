@@ -43,7 +43,7 @@ variables:
     default: "Healthcare and Life Sciences"
     description: The business or accounting unit assigned.  
   tags_RemoveAfter: 
-    default: formatdate("YYYY-MM-DD", timeadd(timestamp(), "8760h"))
+    default: 2026-09-12
     description: Date the resources may be destroyed safely.  Defaults to one year after deployment. 
   tags_developer: 
     default: matthew.giglia@databricks.com
