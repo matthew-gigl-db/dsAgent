@@ -30,6 +30,7 @@ def bronze():
         .option("ignoreTrailingWhiteSpace", "true")
         .option("mode", "PERMISSIVE")
         .option("delimiter", ",")
+        .option("cloudFiles.schemaHints", "property_id STRING, sale_price NUMERIC")
         .load(path))
 
     return (
