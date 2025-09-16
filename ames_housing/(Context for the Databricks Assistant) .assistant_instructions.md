@@ -1,4 +1,4 @@
-Instructions:  Copy all lines below starting with line 3 and incorporate into your personal Databricks Assitant's User Instructions. Update the widget defaults based on your catalog and schema, etc. 
+Instructions:  Copy all lines below starting with line 3 and incorporate into your personal Databricks Assitant's User Instructions. Update the widget defaults based on your catalog and schema, etc.  User Instructions should be saved in your home directory "/Users/<your user name>/" in .assistant_instructions.md.  Files should contain up to 4K characters.  Hint:  Use the assistant to make your instructions more refined.  
 
 # Formatting 
 - Use one tab for indentations in all code and markdown cells.
