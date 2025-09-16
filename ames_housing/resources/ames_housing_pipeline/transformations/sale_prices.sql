@@ -82,7 +82,7 @@ CREATE OR REFRESH STREAMING TABLE sale_prices (
 	,sale_type STRING COMMENT 'Describes the type of sale, which can influence the property\'s marketability and buyer perception.'
 	,sale_condition STRING COMMENT 'Indicates the condition under which the sale occurred, providing insight into market dynamics.'
 	,sale_price DECIMAL(10,0) COMMENT 'Represents the final sale price of the property, which is crucial for assessing market value and trends.'
-	,_rescued_data STRING COMMENT 'Contains any additional data that has been recovered or salvaged, which may provide further insights into the property.'
+	,_rescued_data STRING COMMENT 'Databricks autoloader rescued data column for records that do not conform to the schema. Should not be used for predictive modeling.'
 	,CONSTRAINT valid_schema EXPECT (_rescued_data is NULL) ON VIOLATION DROP ROW
 	,CONSTRAINT valid_property_id EXPECT (property_id IS NOT NULL) ON VIOLATION DROP ROW
 	,CONSTRAINT valid_sale_price EXPECT (sale_price IS NOT NULL) ON VIOLATION DROP ROW
