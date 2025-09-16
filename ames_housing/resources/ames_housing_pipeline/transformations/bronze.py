@@ -24,7 +24,13 @@ def bronze():
 
     df = (spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "csv")
-        .option("cloudFiles.inferSchema", "true")
+        .option("cloudFiles.inferColumnTypes", "true")
+        .option("columnNameOfCorruptRecord", "_corrupt_record")
+        .option("ignoreLeadingWhiteSpace", "true")
+        .option("ignoreTrailingWhiteSpace", "true")
+        .option("mode", "PERMISSIVE")
+        .option("delimiter", ",")
+        .option("cloudFiles.schemaHints", "property_id STRING, sale_price NUMERIC")
         .load(path))
 
     return (
