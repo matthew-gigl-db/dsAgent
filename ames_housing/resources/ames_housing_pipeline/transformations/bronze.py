@@ -1,9 +1,9 @@
-import dlt
+from pyspark import pipelines as dp
 from pyspark.sql.functions import col, input_file_name, current_timestamp
 
 path = spark.conf.get("volume_path_use")
 
-@dlt.table(
+@dp.table(
     name="bronze",
     comment="Ingested housing data with metadata",
     table_properties={
